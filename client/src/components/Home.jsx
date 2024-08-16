@@ -2,7 +2,7 @@ import React from 'react'
 
 const Home = () => {
   return (
-    <div className='min-h-screen bg-blue-500 flex flex-col justify-center items-center text-white text-center px-6'>
+    <div className='min-h-screen bg-red-800 flex flex-col justify-center items-center text-white text-center px-6'>
       <h1 className='text-4xl font-bold mb-6 mt-[50px]'>
         Welcome to Our DAO
       </h1>
@@ -11,10 +11,10 @@ const Home = () => {
         Our DAO helps organizations register and enables students to learn from institutes while earning rewards. Join us to be part of a decentralized future where learning and growth go hand in hand.
       </p>
       <div className='flex gap-x-6 mb-12'>
-        <a href='/organisation-listing' className='bg-green-300 text-blue-500 font-semibold py-3 px-6 rounded-lg shadow-lg hover:bg-blue-100 transition duration-300'>
+        <a href='/organisation-listing' className='bg-black text-white font-semibold py-3 px-6 rounded-lg shadow-lg  border border-2 border-white  transition duration-300'>
           Join as Institute
         </a>
-        <a href='#' className='bg-green-300 text-blue-500 font-semibold py-3 px-6 rounded-lg shadow-lg hover:bg-blue-100 transition duration-300'>
+        <a href='#' className='bg-black text-white font-semibold py-3 px-6 rounded-lg shadow-lg border border-2 border-white  transition duration-300'>
           Join as Student
         </a>
       </div>
