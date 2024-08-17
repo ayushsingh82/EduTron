@@ -39,7 +39,7 @@ function OrganisationListing() {
   return (
     <div className="scroller bg-black ">
       <div className="h-screen">
-      <h1 className="text-lg font-medium text-white text-center py-[30px]">Complete the process to list your organisation</h1>
+      <h1 className="text-lg font-medium text-red-600 text-center py-[30px]">Complete the process to list your organisation</h1>
         <form
           className="flex flex-col items-start ml-40 mr-40 my-5 dark mb-10 py-[50px]"
           onSubmit={handleSubmit}

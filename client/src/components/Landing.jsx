@@ -19,19 +19,19 @@ const Landing = () => {
         </div>
       </div>
       <div className="grid grid-cols-2 gap-8 mt-8">
-        <div className='bg-green-300 text-blue-700 p-6 rounded-lg shadow-lg border border-blue-700 transition duration-300'>
+        <div className='bg-red-700 text-white p-6 rounded-lg shadow-lg border-2 border-white transition duration-300'>
           <h1 className="font-bold text-xl">Box 1 Title</h1>
           <p className="mt-2">This is the description for Box 1.</p>
         </div>
-        <div className='bg-blue-500 text-white p-6 rounded-lg shadow-lg border border-blue-700 transition duration-300'>
+        <div className='bg-black text-white p-6 rounded-lg shadow-lg border-2 border-red-700 transition duration-300'>
           <h1 className="font-bold text-xl">Box 2 Title</h1>
           <p className="mt-2">This is the description for Box 2.</p>
         </div>
-        <div className='bg-blue-500 text-white p-6 rounded-lg shadow-lg border border-blue-700 transition duration-300'>
+        <div className='bg-black text-white p-6 rounded-lg shadow-lg border-2 border-red-700 transition duration-300'>
           <h1 className="font-bold text-xl">Box 3 Title</h1>
           <p className="mt-2">This is the description for Box 3.</p>
         </div>
-        <div className='bg-green-300 text-blue-700 p-6 rounded-lg shadow-lg border border-blue-700 transition duration-300'>
+        <div className='bg-red-700 text-white p-6 rounded-lg shadow-lg border-2 border-white transition duration-300'>
           <h1 className="font-bold text-xl">Box 4 Title</h1>
           <p className="mt-2">This is the description for Box 4.</p>
         </div>

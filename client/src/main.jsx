@@ -8,12 +8,13 @@ import {
   createRoutesFromElements,
   BrowserRouter,
 } from "react-router-dom";
-
+import {NextUIProvider} from '@nextui-org/react'
 import { Route } from "react-router-dom";
 import Home from './components/Home.jsx'
 import Navbar from './components/Navbar.jsx'
 import Landing from './components/Landing.jsx';
 import OrganisationListing from './components/OrganisationListing.jsx'
+import Organisations from './components/Organisations.jsx';
 
 
 const router = createBrowserRouter(
@@ -21,6 +22,7 @@ const router = createBrowserRouter(
     <Route>
       <Route path="/" element={<Home />} />
       <Route path="/landing" element={<Landing />} />
+      <Route path="/organisations" element={<Organisations />} />
       <Route path="/organisation-listing" element={<OrganisationListing />} />
     </Route>
   )
@@ -28,7 +30,9 @@ const router = createBrowserRouter(
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
+  <NextUIProvider>
   <Navbar/>
   <RouterProvider router={router} />
+  </NextUIProvider>
   </StrictMode>,
 )
