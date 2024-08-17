@@ -3,7 +3,7 @@ import { Card, CardHeader, CardBody } from "@nextui-org/card";
 
 const DailyMixCard = () => {
   return (
-    <Card className="py-4 bg-black text-white">
+    <Card className="py-4 bg-black text-white shadow-md shadow-white">
       <CardBody className="overflow-visible py-2">
         <img
           alt="Card background"
