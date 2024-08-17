@@ -7,7 +7,17 @@ const gradientStyle = {
   border: "none",
 };
 
+// import ConnectButton from './ConnectButton';
+// import {  WalletProvider } from '@tronweb3/tronwallet-adapter-react-hooks';
+import { useWallet } from '@tronweb3/tronwallet-adapter-react-hooks';
+import { WalletConnectAdapter } from '@tronweb3/tronwallet-adapters';
+
+
+
 const Navbar = () => {
+
+  const { connect, disconnect, select, connected } = useWallet();
+
   return (
     <nav className="sticky top-0 z-50">
       <div className="flex flex-row mx-auto px-[40px] py-[20px] justify-between items-center bg-black">
@@ -31,7 +41,17 @@ const Navbar = () => {
         </div>
 
         <div className="text-white">
-          Wallet
+    
+        <button type="button" onClick={() => select('TronLink Adapter')}>
+            Select TronLink
+        </button>
+        <button type="button" disabled={connected} onClick={connect}>
+            Connect
+        </button>
+        <button type="button" disabled={!connected} onClick={disconnect}>
+            Disconnect
+        </button>
+  
         </div>
       </div>
       <div style={gradientStyle} />

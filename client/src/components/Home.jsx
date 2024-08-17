@@ -2,7 +2,7 @@ import React from 'react'
 
 const Home = () => {
   return (
-    <div className='min-h-screen bg-red-800 flex flex-col justify-center items-center text-white text-center px-6'>
+    <div className='min-h-screen bg-red-700 flex flex-col justify-center items-center text-white text-center px-6'>
       <h1 className='text-4xl font-bold mb-6 mt-[50px]'>
         Welcome to Our DAO
       </h1>
