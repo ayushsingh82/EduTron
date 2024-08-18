@@ -1,9 +1,10 @@
+
 import React, { useState } from "react";
 
 function OrganisationListing() {
   const [formData, setFormData] = useState({
     name: "",
-    price: "",
+    course: "",
     region: "",
     redirectUrl: "",
   });
@@ -21,7 +22,7 @@ function OrganisationListing() {
     e.preventDefault();
     setSubmitState(1);
 
-    const { name, price, region, redirectUrl } = formData;
+    const { name, price, course, redirectUrl } = formData;
     try {
       // Simulate campaign creation
       console.log("Campaign Created:", {
@@ -39,7 +40,7 @@ function OrganisationListing() {
   return (
     <div className="scroller bg-black ">
       <div className="h-screen">
-      <h1 className="text-lg font-medium text-red-600 text-center py-[30px]">Complete the process to list your organisation</h1>
+      <h1 className="text-lg font-medium text-red-500 text-center py-[30px]">Complete the process to list your organisation</h1>
         <form
           className="flex flex-col items-start ml-40 mr-40 my-5 dark mb-10 py-[50px]"
           onSubmit={handleSubmit}
@@ -65,8 +66,8 @@ function OrganisationListing() {
 
           <div className="relative z-0 w-full mb-6 group">
             <select
-              name="region"
-              value={formData.region}
+              name="course"
+              value={formData.course}
               onChange={handleChange}
               className="block py-2.5 px-0 w-full text-sm text-white-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
               required
@@ -85,7 +86,7 @@ function OrganisationListing() {
               </option>
             </select>
             <label
-              htmlFor="region"
+              htmlFor="course"
               className="peer-focus:font-medium absolute text-sm text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
             >
               Select Organisation Type
@@ -141,7 +142,7 @@ function OrganisationListing() {
           </div>
 
           <button
-            className="text-white mt-6 border border-blue-400 focus:ring-4 font-medium rounded-lg text-sm  mx-auto px-10 py-2.5 text-center bg-transparent dark:focus:ring-blue-800 "
+            className="text-white mt-6 border border-red-500 focus:ring-4 font-medium rounded-lg text-sm  mx-auto px-10 py-2.5 text-center bg-transparent dark:focus:ring-blue-800 "
             type="submit"
             disabled={submitState !== 0}
           >

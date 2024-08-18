@@ -15,7 +15,7 @@ const Landing = () => {
           <a href='/organisation-listing'>Join as Institute</a>  
         </div>
         <div className='bg-black text-white p-6 rounded-lg shadow-lg border border-blue-700  transition duration-300'>
-          Join as Student
+          <a href='student-listing'>Join as Student</a>
         </div>
       </div>
       <div className="grid grid-cols-2 gap-8 mt-8">

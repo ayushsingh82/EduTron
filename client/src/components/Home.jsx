@@ -14,7 +14,7 @@ const Home = () => {
         <a href='/organisation-listing' className='bg-black text-white font-semibold py-3 px-6 rounded-lg shadow-lg  border border-2 border-white  transition duration-300'>
           Join as Institute
         </a>
-        <a href='#' className='bg-black text-white font-semibold py-3 px-6 rounded-lg shadow-lg border border-2 border-white  transition duration-300'>
+        <a href='/student-listing' className='bg-black text-white font-semibold py-3 px-6 rounded-lg shadow-lg border border-2 border-white  transition duration-300'>
           Join as Student
         </a>
       </div>

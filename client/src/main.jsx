@@ -15,7 +15,7 @@ import Navbar from './components/Navbar.jsx'
 import Landing from './components/Landing.jsx';
 import OrganisationListing from './components/OrganisationListing.jsx'
 import Organisations from './components/Organisations.jsx';
-
+import StudentListing from './components/StudentListing.jsx';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -24,6 +24,7 @@ const router = createBrowserRouter(
       <Route path="/landing" element={<Landing />} />
       <Route path="/organisations" element={<Organisations />} />
       <Route path="/organisation-listing" element={<OrganisationListing />} />
+      <Route path="/student-listing" element={<StudentListing />} />
     </Route>
   )
 );
