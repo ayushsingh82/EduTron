@@ -33,7 +33,7 @@ const Navbar = () => {
             <a href="">Courses</a>
           </h1>
           <h1 className="font-medium text-xxl text-white">
-            <a href="">Certificates</a>
+            <a href="/certificate">Certificates</a>
           </h1>
           <h1 className="font-medium text-xxl text-white">
             <a href="/landing">Join Us</a>

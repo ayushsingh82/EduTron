@@ -16,6 +16,7 @@ import Landing from './components/Landing.jsx';
 import OrganisationListing from './components/OrganisationListing.jsx'
 import Organisations from './components/Organisations.jsx';
 import StudentListing from './components/StudentListing.jsx';
+import Certificate from './components/Certificate.jsx';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -25,6 +26,7 @@ const router = createBrowserRouter(
       <Route path="/organisations" element={<Organisations />} />
       <Route path="/organisation-listing" element={<OrganisationListing />} />
       <Route path="/student-listing" element={<StudentListing />} />
+      <Route path='/certificate' element={<Certificate/>}/>c
     </Route>
   )
 );

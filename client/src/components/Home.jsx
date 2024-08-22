@@ -1,14 +1,39 @@
 import React from 'react'
 
+
+import { TypewriterEffectSmooth } from "../components/ui/typewriter-effect";
+
+export function TypewriterEffectSmoothDemo() {
+    const words = [
+      {
+        text: "Welcome to our",
+        className:" text-white"
+      },
+    
+     
+      {
+        text: "Platform.",
+        className: "text-black",
+      },
+    ];
+    return (
+      <div className="flex flex-col items-center justify-center h-[30px]  ">
+        <TypewriterEffectSmooth words={words}  className='text-4xl'/>
+   
+      </div>
+    );
+  }
+
+
 const Home = () => {
   return (
     <div className='min-h-screen bg-red-700 flex flex-col justify-center items-center text-white text-center px-6'>
       <h1 className='text-4xl font-bold mb-6 mt-[50px]'>
-        Welcome to Our DAO
+       <TypewriterEffectSmoothDemo/>
       </h1>
 
       <p className='text-xl mb-8 max-w-2xl'>
-        Our DAO helps organizations register and enables students to learn from institutes while earning rewards. Join us to be part of a decentralized future where learning and growth go hand in hand.
+        Our Platform helps organizations register and enables students to learn from institutes while earning rewards. Join us to be part of a decentralized future where learning and growth go hand in hand.
       </p>
       <div className='flex gap-x-6 mb-12'>
         <a href='/organisation-listing' className='bg-black text-white font-semibold py-3 px-6 rounded-lg shadow-lg  border border-2 border-white  transition duration-300'>

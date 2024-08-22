@@ -17,11 +17,13 @@
     "@tronweb3/tronwallet-abstract-adapter": "^1.1.6",
     "@tronweb3/tronwallet-adapter-react-hooks": "^1.1.7",
     "@tronweb3/tronwallet-adapters": "^1.2.2",
-    "framer-motion": "^11.3.28",
+    "clsx": "^2.1.1",
+    "framer-motion": "^11.3.29",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-hot-toast": "^2.4.1",
-    "react-router-dom": "^6.26.1"
+    "react-router-dom": "^6.26.1",
+    "tailwind-merge": "^2.5.2"
   },
   "devDependencies": {
     "@eslint/js": "^9.9.0",
