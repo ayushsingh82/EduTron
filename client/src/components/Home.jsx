@@ -47,22 +47,19 @@ const Home = () => {
       <img className='' src='https://www.opencampus.xyz/static/media/opening-illustration.5bb9ba880a1179f4ab2a.png' alt='img'/>
 
       <div className='grid grid-cols-4 gap-4 w-full max-w-4xl mt-[120px]'>
-        <div className='bg-green-300 text-blue-900 font-bold p-8 rounded-lg shadow-lg h-64 flex flex-col justify-center'>
-          <h1 className='text-3xl mb-4'>1</h1>
-          <p>This is the first box.</p>
-        </div>
-        <div className='bg-blue-500 text-white font-bold p-8 rounded-lg shadow-lg h-64 flex flex-col justify-center'>
-          <h1 className='text-3xl mb-4'>2</h1>
-          <p>This is the second box.</p>
-        </div>
-        <div className='bg-green-300 text-blue-500  border-blue-500 font-bold p-8 rounded-lg shadow-lg h-64 flex flex-col justify-center'>
-          <h1 className='text-3xl mb-4'>3</h1>
-          <p>This is the third box.</p>
-        </div>
-        <div className='bg-blue-500 text-white font-bold p-8 rounded-lg shadow-lg h-64 flex flex-col justify-center'>
-          <h1 className='text-3xl mb-4'>4</h1>
-          <p>This is the fourth box.</p>
-        </div>
+      <div className='bg-red-700 text-white font-medium p-8 rounded-lg shadow-lg h-52 flex flex-col justify-center border border-2 border-black'>
+  <p className='text-sm'>EduTron provides a decentralized platform for organizations to list courses, attracting motivated learners & ensuring transparency using blockchain technology.</p>
+</div>
+<div className='bg-black text-white  font-medium p-8 rounded-lg shadow-lg h-52 flex flex-col justify-center border border-2 border-black'>
+  <p className='text-sm'>The platform automates registration, course listing, and student enrollment using TRON smart contracts for seamless course certification and reward distribution.</p>
+</div>
+<div className='bg-red-700 text-white  border-blue-500 font-medium p-8 rounded-lg shadow-lg h-52 flex flex-col justify-center border border-2 border-black'>
+  <p className='text-sm'>Milestones include beta testing with selected users, public launch, and continuous improvements based on user feedback to enhance the experience.</p>
+</div>
+<div className='bg-black text-white  font-medium p-8 rounded-lg shadow-lg h-52 flex flex-col justify-center border border-2 border-black'>
+  <p className='text-sm'>Community building through partnerships with educational institutions, platform promotion in the TRON community, and user engagement to drive adoption.</p>
+</div>
+
       </div>
 
       <div className='mt-[80px]'>

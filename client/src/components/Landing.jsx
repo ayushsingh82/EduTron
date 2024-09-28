@@ -19,22 +19,24 @@ const Landing = () => {
         </div>
       </div>
       <div className="grid grid-cols-2 gap-8 mt-8">
-        <div className='bg-red-700 text-white p-6 rounded-lg shadow-lg border-2 border-white transition duration-300'>
-          <h1 className="font-bold text-xl">Box 1 Title</h1>
-          <p className="mt-2">This is the description for Box 1.</p>
-        </div>
-        <div className='bg-black text-white p-6 rounded-lg shadow-lg border-2 border-red-700 transition duration-300'>
-          <h1 className="font-bold text-xl">Box 2 Title</h1>
-          <p className="mt-2">This is the description for Box 2.</p>
-        </div>
-        <div className='bg-black text-white p-6 rounded-lg shadow-lg border-2 border-red-700 transition duration-300'>
-          <h1 className="font-bold text-xl">Box 3 Title</h1>
-          <p className="mt-2">This is the description for Box 3.</p>
-        </div>
-        <div className='bg-red-700 text-white p-6 rounded-lg shadow-lg border-2 border-white transition duration-300'>
-          <h1 className="font-bold text-xl">Box 4 Title</h1>
-          <p className="mt-2">This is the description for Box 4.</p>
-        </div>
+      <div className='bg-red-700 text-white p-6 rounded-lg shadow-lg border-2 border-white transition duration-300 w-64'>
+      <h1 className="font-bold text-xl">Platform Overview</h1>
+      <p className="mt-2">EduTron empowers organizations to list courses, <br/>
+       offering rewards for student participation.</p>
+    </div>
+    <div className='bg-black text-white p-6 rounded-lg shadow-lg border-2 border-red-700 transition duration-300 w-64'>
+      <h1 className="font-bold text-xl">Smart Contracts</h1>
+      <p className="mt-2">TRON smart contracts automate course enrollment, certification, and reward distribution.</p>
+    </div>
+    <div className='bg-black text-white p-6 rounded-lg shadow-lg border-2 border-red-700 transition duration-300 w-64'>
+      <h1 className="font-bold text-xl">Beta Testing</h1>
+      <p className="mt-2">EduTron is currently in beta testing, gathering feedback from selected organizations.</p>
+    </div>
+    <div className='bg-red-700 text-white p-6 rounded-lg shadow-lg border-2 border-white transition duration-300 w-64'>
+      <h1 className="font-bold text-xl">Community Growth</h1>
+      <p className="mt-2">Focus on building a strong EduTron community through partnerships and engagement.</p>
+    </div>
+    
       </div>
     </div>
   );
