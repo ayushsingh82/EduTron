@@ -32,6 +32,36 @@ function StudentListing() {
     }
   };
 
+
+
+async function   onboardStudent (){
+  
+  var options = {
+    feeLimit: 100000000,
+    callValue: 0,
+    tokenValue: 10,
+    tokenId: 1000001,
+    txLocal: true
+   };
+   
+   var parameter = [{type:'address',value:'TV3nb5HYFe2xBEmyb3ETe93UGkjAhWyzrs'},{type:'uint256',value:100}];
+
+//    var parameter =
+//    [
+//   {
+//     type:"string", 
+//     value: ""
+//   },{
+//          type:"string" ,
+//          value:""
+//   },
+
+// ]
+
+   const transaction = await tronWeb.transactionBuilder.triggerSmartContract("TBqKDzeqfGotma8f47GvwLKaD4rqtiRdkE", "studentOnboard(string , string)" ,options ,parameter , window.tronLink.tronWeb.defaultAddress.base58)
+
+}
+
   return (
     <div className="scroller bg-black ">
       <div className="h-screen">
@@ -63,7 +93,7 @@ function StudentListing() {
           <div className="relative z-0 w-full mb-6 group">
           <input
             type="text"
-            name="name"
+            name="description"
             value={formData.description}
             onChange={handleChange}
             id="eventName"
