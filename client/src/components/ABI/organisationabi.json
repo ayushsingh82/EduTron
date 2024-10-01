@@ -1,0 +1,88 @@
+[
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "_OrganisatioAddress",
+				"type": "address"
+			}
+		],
+		"name": "getOrganisation",
+		"outputs": [
+			{
+				"internalType": "string",
+				"name": "",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "",
+				"type": "string"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "string",
+				"name": "_name",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "_types",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "_redirectURL",
+				"type": "string"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_prise",
+				"type": "uint256"
+			}
+		],
+		"name": "organisationOnboard",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "",
+				"type": "address"
+			}
+		],
+		"name": "organisations",
+		"outputs": [
+			{
+				"internalType": "string",
+				"name": "name",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "types",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "redirectURL",
+				"type": "string"
+			},
+			{
+				"internalType": "uint256",
+				"name": "prise",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	}
+]

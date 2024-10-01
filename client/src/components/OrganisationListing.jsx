@@ -155,3 +155,33 @@ function OrganisationListing() {
 }
 
 export default OrganisationListing;
+
+
+// var options = {
+//  feeLimit: 100000000,
+//  callValue: 0,
+//  tokenValue: 10,
+//  tokenId: 1000001,
+//  txLocal: true
+// };
+
+// const onboardOrganisation = await tronWeb.transactionBuilder.triggerSmartContract("TFKKHaExd5R3PWFtriCjQQqdr5DG8jtJnz
+// ","organisationOnboard(string,string,string,uint256)",ptions ,parameter , window.tronLink.tronWeb.defaultAddress.base58)
+
+// var parameter = [
+ //   {
+//     type:"string" ,
+//     value: ""
+//   },{
+//          type:"string" ,
+//          value:""
+//   }, {
+//          type:"string" ,
+//          value:""
+//      }, {
+//          type:"uint256",
+//          value :""
+//        }
+ //   ]
+
+

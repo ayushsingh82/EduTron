@@ -3,7 +3,7 @@ import React, { useState } from "react";
 function StudentListing() {
   const [formData, setFormData] = useState({
     name: "",
-    address:"",
+    description:"",
   });
   const [submitState, setSubmitState] = useState(0);
 
@@ -24,7 +24,7 @@ function StudentListing() {
       // Simulate campaign creation
       console.log("Campaign Created:", {
         Studentname: name,
-        Walletaddress: address,
+        StudentDescription: description,
       });
       setSubmitState(2);
     } catch (error) {
@@ -64,7 +64,7 @@ function StudentListing() {
           <input
             type="text"
             name="name"
-            value={formData.address}
+            value={formData.description}
             onChange={handleChange}
             id="eventName"
             className="block py-2.5 px-0 w-full text-sm text-white-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-red-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
@@ -75,7 +75,7 @@ function StudentListing() {
             htmlFor="eventName"
             className="peer-focus:font-medium absolute text-sm text-gray-400  duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-red-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
           >
-            Wallet address
+            Description
           </label>
         </div>
           <div
@@ -85,7 +85,7 @@ function StudentListing() {
             <span className="font-medium text-red-600">
               <b>Warning!</b>
             </span>{" "}
-            Try to put the same address connected to dapp 🤯 😎
+            Try to put short description aboout you 🤯 😎
           </div>
 
           <button
@@ -102,3 +102,27 @@ function StudentListing() {
 }
 
 export default StudentListing;
+
+// var options = {
+//  feeLimit: 100000000,
+//  callValue: 0,
+//  tokenValue: 10,
+//  tokenId: 1000001,
+//  txLocal: true
+// };
+
+// var parameter = [{type:'address',value:'TV3nb5HYFe2xBEmyb3ETe93UGkjAhWyzrs'},{type:'uint256',value:100}];
+
+//   const onboardStudent = await tronWeb.transactionBuilder.triggerSmartContract("TBqKDzeqfGotma8f47GvwLKaD4rqtiRdkE
+// ", "studentOnboard(string , string)" ,options ,parameter , window.tronLink.tronWeb.defaultAddress.base58)
+
+// [
+//   {
+//     type:"string", 
+//     value: ""
+//   },{
+//          type:"string" ,
+//          value:""
+//   },
+
+// ]
