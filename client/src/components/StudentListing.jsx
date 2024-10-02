@@ -10,7 +10,7 @@ function StudentListing() {
   const [contract, setContract] = useState(null);
 
   // ABI for the contract
-  const ORGABI =  [
+  const STUABI =  [
     {
       "inputs": [
         {
@@ -85,7 +85,7 @@ function StudentListing() {
   useEffect(() => {
     const getContract = async () => {
       const instance = await window.tronLink.tronWeb.contract(
-        ORGABI,
+        STUABI,
         "TBqKDzeqfGotma8f47GvwLKaD4rqtiRdkE"
       );
       setContract(instance);

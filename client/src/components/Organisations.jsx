@@ -2,7 +2,7 @@ import React from 'react';
 import { Card, CardHeader, CardBody } from "@nextui-org/card";
 
 import { TypewriterEffectSmooth } from "../components/ui/typewriter-effect";
-import organisationabi from '../components/ABI/organisationabi.json'
+
 
 export function TypewriterEffectSmoothDemo() {
   const words = [
