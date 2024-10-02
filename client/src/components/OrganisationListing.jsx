@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 
 function OrganisationListing() {
@@ -7,7 +6,12 @@ function OrganisationListing() {
     course: "",
     region: "",
     redirectUrl: "",
+    price: "",
+    files: [],
   });
+
+  const [ipfsLinks, setIpfsLinks] = useState([]);
+
   const [submitState, setSubmitState] = useState(0);
 
   const handleChange = (e) => {
@@ -18,18 +22,27 @@ function OrganisationListing() {
     });
   };
 
+  const handleFileChange = (e) => {
+    const files = Array.from(e.target.files);
+    setFormData({
+      ...formData,
+      files: files,
+    });
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setSubmitState(1);
 
-    const { name, price, course, redirectUrl } = formData;
+    const { name, price, course, redirectUrl, files } = formData;
     try {
       // Simulate campaign creation
       console.log("Campaign Created:", {
         campaignName: name,
         spendingLimit: price,
-        region,
+        course,
         redirectUrl,
+        files,
       });
       setSubmitState(2);
     } catch (error) {
@@ -40,7 +53,9 @@ function OrganisationListing() {
   return (
     <div className="scroller bg-black ">
       <div className="h-screen">
-      <h1 className="text-lg font-medium text-red-500 text-center py-[30px]">Complete the process to list your organisation</h1>
+        <h1 className="text-lg font-medium text-red-500 text-center py-[30px]">
+          Complete the process to list your organisation
+        </h1>
         <form
           className="flex flex-col items-start ml-40 mr-40 my-5 dark mb-10 py-[50px]"
           onSubmit={handleSubmit}
@@ -79,10 +94,10 @@ function OrganisationListing() {
                 marketing
               </option>
               <option value="development" className="text-black">
-               development
+                development
               </option>
               <option value="arts" className="text-black">
-               arts
+                arts
               </option>
             </select>
             <label
@@ -108,7 +123,7 @@ function OrganisationListing() {
               htmlFor="redirectUrl"
               className="peer-focus:font-medium absolute text-sm text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
             >
-              Redirect URL for Ads
+              Redirect URL for Course
             </label>
           </div>
 
@@ -127,7 +142,7 @@ function OrganisationListing() {
               htmlFor="price"
               className="peer-focus:font-medium absolute text-sm text-gray-400  duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
             >
-              Spending Limit 
+              Spending Limit
             </label>
           </div>
 
@@ -139,6 +154,37 @@ function OrganisationListing() {
               <b>Warning!</b>
             </span>{" "}
             The above spending limit is for one time/single campaign 🤯 😎
+          </div>
+
+          <div className="mb-6">
+            <label
+              className="block mb-2 text-sm font-medium text-gray-400"
+              htmlFor="file_input"
+            >
+              Upload files
+            </label>
+            <hr className="text-gray-600" />
+            <input
+              type="file"
+              name="files"
+              required
+              multiple
+              onChange={handleFileChange}
+              className="mt-[20px] border-2 border-transparent"
+            />
+            <br />
+            {formData.files.length > 0 && (
+              <div className="grid grid-cols-10 gap-3">
+                {formData.files.map((file, index) => (
+                  <img
+                    key={index}
+                    src={URL.createObjectURL(file)}
+                    alt={`Uploaded File ${index + 1}`}
+                    style={{ width: "100px", marginTop: "10px" }}
+                  />
+                ))}
+              </div>
+            )}
           </div>
 
           <button
