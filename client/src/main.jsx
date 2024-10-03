@@ -17,6 +17,7 @@ import OrganisationListing from './components/OrganisationListing.jsx'
 import Organisations from './components/Organisations.jsx';
 import StudentListing from './components/StudentListing.jsx';
 import Certificate from './components/Certificate.jsx';
+import Courses from './components/Courses.jsx';
 
 
 
@@ -28,7 +29,8 @@ const router = createBrowserRouter(
       <Route path="/organisations" element={<Organisations />} />
       <Route path="/organisation-listing" element={<OrganisationListing />} />
       <Route path="/student-listing" element={<StudentListing />} />
-      <Route path='/certificate' element={<Certificate/>}/>c
+      <Route path='/courses' element={<Courses/>}/>
+      <Route path='/certificate' element={<Certificate/>}/>
     </Route>
   )
 );
