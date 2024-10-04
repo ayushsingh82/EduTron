@@ -168,14 +168,16 @@ const DailyMixCard = ({ name, orgType, redirectURL, prize }) => {
 		  <img
 			alt="Card background"
 			className="object-cover rounded-xl"
-			src="https://nextui.org/images/hero-card-complete.jpeg"
+			src={`https://picsum.photos/220/180?random=${Math.random()}`} 
 			width={270}
 		  />
 		</CardBody>
 		<CardHeader className="pb-0 pt-2 px-4 flex-col items-start">
 		  <h4 className="font-bold text-medium">Name: {name}</h4>
-		  <p className="text-tiny uppercase font-bold mt-[20px]">
-			Course URL: {redirectURL}
+		  <p className="text-tiny uppercase font-bold mt-[20px]">  Course URL: 
+		  <a href={redirectURL} target="_blank" rel="noopener noreferrer" className="text-blue-400 underline">
+		  {redirectURL}
+		</a>
 		  </p>
 		  <h4 className="font-bold text-tiny">Type: {orgType}</h4>
 
