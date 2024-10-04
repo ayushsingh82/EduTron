@@ -62,9 +62,6 @@ const Navbar = () => {
             <a href="/organisations">Organisations</a>
           </h1>
           <h1 className="font-medium text-xxl text-white">
-            <a href="">Courses</a>
-          </h1>
-          <h1 className="font-medium text-xxl text-white">
             <a href="/certificate">Certificates</a>
           </h1>
           <h1 className="font-medium text-xxl text-white">

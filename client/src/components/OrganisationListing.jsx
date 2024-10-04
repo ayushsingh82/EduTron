@@ -14,37 +14,146 @@ function OrganisationOnboarding() {
   // ABI for the Organisation smart contract
   const ORGABI = [
     {
+      "anonymous": false,
       "inputs": [
-        { "internalType": "address", "name": "_OrganisationAddress", "type": "address" }
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "orgAddress",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "string",
+          "name": "name",
+          "type": "string"
+        },
+        {
+          "indexed": false,
+          "internalType": "string",
+          "name": "orgType",
+          "type": "string"
+        },
+        {
+          "indexed": false,
+          "internalType": "string",
+          "name": "redirectURL",
+          "type": "string"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "prize",
+          "type": "uint256"
+        }
       ],
-      "name": "getOrganisation",
+      "name": "OrganisationOnboarded",
+      "type": "event"
+    },
+    {
+      "inputs": [],
+      "name": "getAllOrgs",
       "outputs": [
-        { "internalType": "string", "name": "", "type": "string" },
-        { "internalType": "string", "name": "", "type": "string" }
+        {
+          "components": [
+            {
+              "internalType": "string",
+              "name": "name",
+              "type": "string"
+            },
+            {
+              "internalType": "string",
+              "name": "orgType",
+              "type": "string"
+            },
+            {
+              "internalType": "string",
+              "name": "redirectURL",
+              "type": "string"
+            },
+            {
+              "internalType": "uint256",
+              "name": "prize",
+              "type": "uint256"
+            }
+          ],
+          "internalType": "struct UserForm.Organisation[]",
+          "name": "",
+          "type": "tuple[]"
+        }
       ],
       "stateMutability": "view",
       "type": "function"
     },
     {
       "inputs": [
-        { "internalType": "string", "name": "_name", "type": "string" },
-        { "internalType": "string", "name": "_course", "type": "string" },
-        { "internalType": "string", "name": "_redirectURL", "type": "string" },
-        { "internalType": "uint256", "name": "_price", "type": "uint256" }
+        {
+          "internalType": "string",
+          "name": "_name",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "_types",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "_redirectURL",
+          "type": "string"
+        },
+        {
+          "internalType": "uint256",
+          "name": "_prize",
+          "type": "uint256"
+        }
       ],
       "name": "organisationOnboard",
       "outputs": [],
       "stateMutability": "nonpayable",
       "type": "function"
     },
-  ];
-
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "name": "organisations",
+      "outputs": [
+        {
+          "internalType": "string",
+          "name": "name",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "orgType",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "redirectURL",
+          "type": "string"
+        },
+        {
+          "internalType": "uint256",
+          "name": "prize",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ]
   // Fetch contract instance when the component mounts
   useEffect(() => {
     const getContract = async () => {
       const instance = await window.tronLink.tronWeb.contract(
         ORGABI,
-        "TFKKHaExd5R3PWFtriCjQQqdr5DG8jtJnz" // Replace with your smart contract address
+        "TJp2yuzxR2bD1rkHcHkdKWdUDZFDdk7FoD" 
       );
       setContract(instance);
     };
@@ -72,10 +181,11 @@ function OrganisationOnboarding() {
       if (contract) {
         // Call the contract method with form data
         let result = await contract.organisationOnboard(name, course, redirectUrl, parseInt(price)).send({
-          feeLimit: 1000000000,
+          feeLimit: 2000000000,
           shouldPollResponse: true,
         });
 
+      
         console.log("Contract call result:", result);
         console.log(`${name}, ${course}, ${redirectUrl}, ${price}`);
         setSubmitState(2); // Successful state
@@ -115,28 +225,25 @@ function OrganisationOnboarding() {
             </label>
           </div>
 
+
           <div className="relative z-0 w-full mb-6 group">
-            <select
-              name="course"
-              value={formData.course}
-              onChange={handleChange}
-              className="block py-2.5 px-0 w-full text-sm text-white-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-              required
-            >
-              <option value="" disabled>
-                [select course type]
-              </option>
-              <option value="marketing">Marketing</option>
-              <option value="development">Development</option>
-              <option value="arts">Arts</option>
-            </select>
-            <label
-              htmlFor="course"
-              className="peer-focus:font-medium absolute text-sm text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
-            >
-              Select Course Type
-            </label>
-          </div>
+          <input
+            type="text"
+            name="course"
+            value={formData.course}
+            onChange={handleChange}
+            id="course"
+            className="block py-2.5 px-0 w-full text-sm text-white-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+            placeholder=" "
+            required
+          />
+          <label
+            htmlFor="course"
+            className="peer-focus:font-medium absolute text-sm text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+          >
+             course type
+          </label>
+        </div>
 
           <div className="relative z-0 w-full mb-6 group">
             <input
@@ -262,4 +369,29 @@ export default OrganisationOnboarding;
 //      ))}
 //    </div>
 //  )}
+// </div>
+
+
+
+// <div className="relative z-0 w-full mb-6 group">
+// <select
+// name="orgType" // Corrected from "course" to "orgType"
+// value={formData.orgType}
+// onChange={handleChange}
+// className="block py-2.5 px-0 w-full text-sm text-white-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+// required
+// >
+// <option value="" className="bg-black text-white" disabled>[select organization type]</option>
+// <option value="market" className="bg-black text-white">Market</option>
+// <option value="development" className="bg-black text-white">Development</option>
+// <option value="art" className="bg-black text-white">Art</option>
+// <option value="business" className="bg-black text-white">Business</option>
+// </select>
+
+//   <label
+//     htmlFor="course"
+//     className="peer-focus:font-medium absolute text-sm text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+//   >
+//     Select Course Type
+//   </label>
 // </div>
