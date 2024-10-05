@@ -153,7 +153,7 @@ function OrganisationOnboarding() {
     const getContract = async () => {
       const instance = await window.tronLink.tronWeb.contract(
         ORGABI,
-        "TJp2yuzxR2bD1rkHcHkdKWdUDZFDdk7FoD" 
+        "TMR1UEDaLzvT87nmsyqErcq6CCjEdvScja" 
       );
       setContract(instance);
     };

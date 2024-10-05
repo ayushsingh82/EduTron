@@ -44,7 +44,7 @@ const Home = () => {
         </a>
       </div>
 
-      <img className='' src='https://www.opencampus.xyz/static/media/opening-illustration.5bb9ba880a1179f4ab2a.png' alt='img'/>
+      <img className='' src='https://www.opencampus.xyz/static/media/oc-hero.9b9607d39b00be7b2f2f.png' alt='img'/>
 
       <div className='grid grid-cols-4 gap-4 w-full max-w-4xl mt-[120px]'>
       <div className='bg-red-700 text-white font-medium p-8 rounded-lg shadow-lg h-52 flex flex-col justify-center border border-2 border-black'>

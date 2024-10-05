@@ -5,7 +5,7 @@ const Landing = () => {
     <div
       className="flex flex-col justify-center items-center gap-y-8 mt-[0px] min-h-screen bg-red-700"
       style={{
-        backgroundImage: `url('https://www.opencampus.xyz/static/media/opening-illustration.5bb9ba880a1179f4ab2a.png')`,
+        backgroundImage: `url('https://www.opencampus.xyz/static/media/oc-hero.9b9607d39b00be7b2f2f.png')`,
         backgroundSize: 'cover',
         backgroundPosition: 'center',
       }}
