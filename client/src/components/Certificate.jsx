@@ -11,17 +11,17 @@ export function TypewriterEffectSmoothDemo() {
         className:"text-md text-white"
       },
       {
-        text: "courses",
-        className: "text-back",
+        text: "certificates",
+        className: "text-white",
       },
       {
-        text: "and",
+        text: "reflects big ",
         className:"text-white"
       },
      
       {
-        text: "certificates.",
-        className: "text-back",
+        text: "accomplishments.",
+        className: "text-white",
       },
     ];
     return (
@@ -37,18 +37,16 @@ const DailyMixCard = () => {
   return (
     <Card className="py-4 bg-black shadow shadow-md shadow-white">
       <CardBody className="overflow-visible py-2">
-        <img
-          alt="Card background"
-          className="object-cover rounded-xl"
-          src="https://nextui.org/images/hero-card-complete.jpeg"
-          width={270}
-        />
+      <img
+			alt="Card background"
+			className="object-cover rounded-xl"
+			src={`https://picsum.photos/220/180?random=${Math.random()}`}
+			width={270}
+		  />
       </CardBody>
       <CardHeader className="pb-0 pt-2 px-4 flex-col items-start">
-      <h4 className="font-bold text-medium text-white">Name :</h4>
-      <button className="text-tiny uppercase font-bold mt-[20px] border border-2 rounded-md px-[4px] py-[1px]
-      bg-red-600 text-white">mint</button>
-     
+      <h4 className="font-medium text-medium text-white">Course Name :</h4>
+      <h4 className="font-medium text-medium text-white mt-[10px]">Issued to : {window.tronLink.tronWeb.defaultAddress.base58} </h4>       
       
     </CardHeader>
     </Card>
@@ -63,8 +61,7 @@ const Certificate = () => {
     </h1>
     <div className="flex justify-center gap-x-12">
       <DailyMixCard />
-      <DailyMixCard />
-      <DailyMixCard />
+     
     </div>
   </div>
   );

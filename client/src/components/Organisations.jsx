@@ -167,81 +167,12 @@ const getYouTubeVideoID = (url) => {
 	return match ? match[1] : null;
   };
   
-//   const DailyMixCard = ({ name, orgType, redirectURL, prize }) => {
-// 	const [watchProgress, setWatchProgress] = useState(0);
-// 	const videoRef = useRef(null);
-  
-// 	useEffect(() => {
-// 	  const handleTimeUpdate = () => {
-// 		const currentTime = videoRef.current.currentTime;
-// 		const duration = videoRef.current.duration;
-// 		const progress = (currentTime / duration) * 100;
-// 		setWatchProgress(progress);
-  
-// 		if (progress === 100) {
-// 		  console.log("Course completed! Mint NFT.");
-// 		  // Call minting logic here
-// 		}
-// 	  };
-  
-// 	  if (videoRef.current) {
-// 		videoRef.current.addEventListener("timeupdate", handleTimeUpdate);
-// 	  }
-  
-// 	  return () => {
-// 		if (videoRef.current) {
-// 		  videoRef.current.removeEventListener("timeupdate", handleTimeUpdate);
-// 		}
-// 	  };
-// 	}, []);
-  
-// 	return (
-// 	  <Card className="py-4 bg-black text-white shadow-md shadow-white">
-// 		<CardBody className="overflow-visible py-2">
-// 		  <img
-// 			alt="Card background"
-// 			className="object-cover rounded-xl"
-// 			src={`https://picsum.photos/220/180?random=${Math.random()}`}
-// 			width={270}
-// 		  />
-// 		</CardBody>
-// 		<CardHeader className="pb-0 pt-2 px-4 flex-col items-start">
-// 		  <h4 className="font-bold text-medium">Name: {name}</h4>
-// 		  <p className="text-tiny uppercase font-bold mt-[20px]">Type: {orgType}</p>
-  
-// 		  {/* Embedding video using <video> tag */}
-// 		  <div className="mt-4">
-// 			<video
-// 			  ref={videoRef}
-// 			  width="100%"
-// 			  height="200"
-// 			  controls
-// 			  className="rounded-lg"
-// 			>
-
-
-// 			  <source src="https://www.w3schools.com/html/mov_bbb.webm" type="video/webm" />
-// 			</video>
-// 		  </div>
-  
-// 		  {/* Displaying progress */}
-// 		  <p className="text-tiny mt-4">
-// 			Watched: {watchProgress.toFixed(2)}%
-// 		  </p>
-  
-// 		  {/* Optionally add prize information */}
-// 		  <h4 className="font-bold text-tiny">Prize: {prize} TRX</h4>
-// 		</CardHeader>
-// 	  </Card>
-// 	);
-//   };
-  
+ 
 const getYouTubeEmbedURL = (url) => {
 	const videoID = getYouTubeVideoID(url);
 	return videoID ? `https://www.youtube.com/embed/${videoID}?enablejsapi=1` : null;
   };
-  
-//   const DailyMixCard = ({ name, orgType, redirectURL, prize }) => {
+
 // 	const [watchProgress, setWatchProgress] = useState(0);
 // 	const iframeRef = useRef(null);
   
@@ -315,31 +246,142 @@ const getYouTubeEmbedURL = (url) => {
 // 	);
 //   };
 
+// const DailyMixCard = ({ name, orgType, redirectURL, prize }) => {
+// 	const [watchProgress, setWatchProgress] = useState(0);
+// 	const iframeRef = useRef(null);
+// 	const playerRef = useRef(null);
+  
+// 	useEffect(() => {
+// 	  const onPlayerStateChange = (event) => {
+// 		if (event.data === 1) {
+// 		  // Video is playing, start progress tracking
+// 		  const duration = event.target.getDuration();
+  
+// 		  const interval = setInterval(() => {
+// 			const currentTime = event.target.getCurrentTime();
+// 			const progress = (currentTime / duration) * 100;
+// 			setWatchProgress(progress);
+  
+// 			if (progress === 100) {
+// 			  console.log("Course completed! Mint NFT.");
+// 			  clearInterval(interval); // Stop checking progress after completion
+// 			}
+// 		  }, 1000);
+// 		}
+// 	  };
+  
+// 	  // Load YouTube IFrame API
+// 	  const loadYouTubeAPI = () => {
+// 		if (!window.YT) {
+// 		  const tag = document.createElement("script");
+// 		  tag.src = "https://www.youtube.com/iframe_api";
+// 		  const firstScriptTag = document.getElementsByTagName("script")[0];
+// 		  firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+  
+// 		  // Set up event listener for API ready
+// 		  window.onYouTubeIframeAPIReady = () => {
+// 			playerRef.current = new window.YT.Player(iframeRef.current, {
+// 			  events: {
+// 				onStateChange: onPlayerStateChange,
+// 			  },
+// 			});
+// 		  };
+// 		} else {
+// 		  playerRef.current = new window.YT.Player(iframeRef.current, {
+// 			events: {
+// 			  onStateChange: onPlayerStateChange,
+// 			},
+// 		  });
+// 		}
+// 	  };
+  
+// 	  loadYouTubeAPI();
+// 	}, []);
+  
+// 	const videoEmbedURL = getYouTubeEmbedURL(redirectURL);
+  
+// 	return (
+// 	  <Card className="py-4 bg-black text-white shadow-md shadow-white">
+// 		<CardBody className="overflow-visible py-2">
+// 		  <img
+// 			alt="Card background"
+// 			className="object-cover rounded-xl"
+// 			src={`https://picsum.photos/220/180?random=${Math.random()}`}
+// 			width={270}
+// 		  />
+// 		</CardBody>
+// 		<CardHeader className="pb-0 pt-2 px-4 flex-col items-start">
+// 		  <h4 className="font-bold text-medium">Name: {name}</h4>
+// 		  <p className="text-tiny uppercase font-bold mt-[20px]">Type: {orgType}</p>
+  
+// 		  {/* Embedding video using iframe for YouTube */}
+// 		  <div className="mt-4">
+// 			{videoEmbedURL ? (
+// 			  <iframe
+// 				ref={iframeRef}
+// 				width="100%"
+// 				height="200"
+// 				src={videoEmbedURL}
+// 				frameBorder="0"
+// 				allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+// 				allowFullScreen
+// 				className="rounded-lg"
+// 			  ></iframe>
+// 			) : (
+// 			  <p className="text-red-500">Invalid YouTube URL</p>
+// 			)}
+// 		  </div>
+  
+// 		  {/* Displaying progress */}
+// 		  <p className="text-tiny mt-4">Watched: {watchProgress.toFixed(2)}%</p>
+  
+// 		  {/* Optionally add prize information */}
+
+// 		</CardHeader>
+// 	  </Card>
+// 	);
+//   };
+
 const DailyMixCard = ({ name, orgType, redirectURL, prize }) => {
 	const [watchProgress, setWatchProgress] = useState(0);
+	const [isMintAllowed, setIsMintAllowed] = useState(false);
 	const iframeRef = useRef(null);
 	const playerRef = useRef(null);
+	let progressInterval;
   
 	useEffect(() => {
 	  const onPlayerStateChange = (event) => {
-		if (event.data === 1) {
-		  // Video is playing, start progress tracking
-		  const duration = event.target.getDuration();
+		const player = event.target;
+		const duration = player.getDuration();
   
-		  const interval = setInterval(() => {
-			const currentTime = event.target.getCurrentTime();
+		if (event.data === window.YT.PlayerState.PLAYING && duration > 0) {
+		  if (progressInterval) clearInterval(progressInterval);
+  
+		  // Set interval to update the progress every second
+		  progressInterval = setInterval(() => {
+			const currentTime = player.getCurrentTime();
 			const progress = (currentTime / duration) * 100;
 			setWatchProgress(progress);
   
-			if (progress === 100) {
-			  console.log("Course completed! Mint NFT.");
-			  clearInterval(interval); // Stop checking progress after completion
+			// Show the mint button when video progress is greater than or equal to 97%
+			if (progress >= 97) {
+			  setIsMintAllowed(true);
+			} else {
+			  setIsMintAllowed(false);
+			}
+  
+			if (progress >= 100) {
+			  clearInterval(progressInterval);
 			}
 		  }, 1000);
+		} else if (
+		  event.data === window.YT.PlayerState.PAUSED ||
+		  event.data === window.YT.PlayerState.ENDED
+		) {
+		  clearInterval(progressInterval);
 		}
 	  };
   
-	  // Load YouTube IFrame API
 	  const loadYouTubeAPI = () => {
 		if (!window.YT) {
 		  const tag = document.createElement("script");
@@ -347,7 +389,6 @@ const DailyMixCard = ({ name, orgType, redirectURL, prize }) => {
 		  const firstScriptTag = document.getElementsByTagName("script")[0];
 		  firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
   
-		  // Set up event listener for API ready
 		  window.onYouTubeIframeAPIReady = () => {
 			playerRef.current = new window.YT.Player(iframeRef.current, {
 			  events: {
@@ -365,6 +406,10 @@ const DailyMixCard = ({ name, orgType, redirectURL, prize }) => {
 	  };
   
 	  loadYouTubeAPI();
+  
+	  return () => {
+		clearInterval(progressInterval); // Clear interval on unmount
+	  };
 	}, []);
   
 	const videoEmbedURL = getYouTubeEmbedURL(redirectURL);
@@ -383,7 +428,6 @@ const DailyMixCard = ({ name, orgType, redirectURL, prize }) => {
 		  <h4 className="font-bold text-medium">Name: {name}</h4>
 		  <p className="text-tiny uppercase font-bold mt-[20px]">Type: {orgType}</p>
   
-		  {/* Embedding video using iframe for YouTube */}
 		  <div className="mt-4">
 			{videoEmbedURL ? (
 			  <iframe
@@ -401,15 +445,33 @@ const DailyMixCard = ({ name, orgType, redirectURL, prize }) => {
 			)}
 		  </div>
   
-		  {/* Displaying progress */}
-		  <p className="text-tiny mt-4">Watched: {watchProgress.toFixed(2)}%</p>
+		  {/* Progress Bar */}
+		  <div className="w-full bg-gray-300 rounded-full h-2.5 mt-4">
+			<div
+			  className="bg-blue-600 h-2.5 rounded-full"
+			  style={{ width: `${watchProgress}%` }}
+			></div>
+		  </div>
   
-		  {/* Optionally add prize information */}
-
+		  {/* Show percentage */}
+		  <p className="text-tiny mt-2">Watched: {watchProgress.toFixed(2)}%</p>
+  
+		  {/* Show Mint button if video progress is greater than 97% */}
+		  {isMintAllowed && (
+			<button
+			  className="mt-4 bg-green-500 text-white px-4 py-2 rounded-md"
+			  onClick={() => console.log("Minting NFT")}
+			>
+			  Mint
+			</button>
+		  )}
 		</CardHeader>
 	  </Card>
 	);
   };
+  
+  
+  
 
   const Organisation = () => {
 	const [orgData, setOrgData] = useState([]);
@@ -471,3 +533,6 @@ const DailyMixCard = ({ name, orgType, redirectURL, prize }) => {
 // prize={parseInt(org.prize._hex, 16)}
 
 //		  <h4 className="font-bold text-tiny">Prize: {prize} TRX</h4>
+
+  
+//   const DailyMixCard = ({ name, orgType, redirectURL, prize }) => {
