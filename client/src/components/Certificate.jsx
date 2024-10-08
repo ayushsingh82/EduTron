@@ -45,7 +45,7 @@ const DailyMixCard = () => {
 		  />
       </CardBody>
       <CardHeader className="pb-0 pt-2 px-4 flex-col items-start">
-      <h4 className="font-medium text-medium text-white">Course Name :</h4>
+      <h4 className="font-medium text-medium text-white">Course Name : Central Dao</h4>
       <h4 className="font-medium text-medium text-white mt-[10px]">Issued to : {window.tronLink.tronWeb.defaultAddress.base58} </h4>       
       
     </CardHeader>

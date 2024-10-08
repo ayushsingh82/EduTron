@@ -1,5 +1,6 @@
 import React, { useState ,useEffect ,useRef} from 'react';
 import { Card, CardHeader, CardBody } from "@nextui-org/card";
+// import { useHistory } from "react-router-dom"; // Import useHistory to navigate
 
 import { TypewriterEffectSmooth } from "../components/ui/typewriter-effect";
 
@@ -246,101 +247,7 @@ const getYouTubeEmbedURL = (url) => {
 // 	);
 //   };
 
-// const DailyMixCard = ({ name, orgType, redirectURL, prize }) => {
-// 	const [watchProgress, setWatchProgress] = useState(0);
-// 	const iframeRef = useRef(null);
-// 	const playerRef = useRef(null);
-  
-// 	useEffect(() => {
-// 	  const onPlayerStateChange = (event) => {
-// 		if (event.data === 1) {
-// 		  // Video is playing, start progress tracking
-// 		  const duration = event.target.getDuration();
-  
-// 		  const interval = setInterval(() => {
-// 			const currentTime = event.target.getCurrentTime();
-// 			const progress = (currentTime / duration) * 100;
-// 			setWatchProgress(progress);
-  
-// 			if (progress === 100) {
-// 			  console.log("Course completed! Mint NFT.");
-// 			  clearInterval(interval); // Stop checking progress after completion
-// 			}
-// 		  }, 1000);
-// 		}
-// 	  };
-  
-// 	  // Load YouTube IFrame API
-// 	  const loadYouTubeAPI = () => {
-// 		if (!window.YT) {
-// 		  const tag = document.createElement("script");
-// 		  tag.src = "https://www.youtube.com/iframe_api";
-// 		  const firstScriptTag = document.getElementsByTagName("script")[0];
-// 		  firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-  
-// 		  // Set up event listener for API ready
-// 		  window.onYouTubeIframeAPIReady = () => {
-// 			playerRef.current = new window.YT.Player(iframeRef.current, {
-// 			  events: {
-// 				onStateChange: onPlayerStateChange,
-// 			  },
-// 			});
-// 		  };
-// 		} else {
-// 		  playerRef.current = new window.YT.Player(iframeRef.current, {
-// 			events: {
-// 			  onStateChange: onPlayerStateChange,
-// 			},
-// 		  });
-// 		}
-// 	  };
-  
-// 	  loadYouTubeAPI();
-// 	}, []);
-  
-// 	const videoEmbedURL = getYouTubeEmbedURL(redirectURL);
-  
-// 	return (
-// 	  <Card className="py-4 bg-black text-white shadow-md shadow-white">
-// 		<CardBody className="overflow-visible py-2">
-// 		  <img
-// 			alt="Card background"
-// 			className="object-cover rounded-xl"
-// 			src={`https://picsum.photos/220/180?random=${Math.random()}`}
-// 			width={270}
-// 		  />
-// 		</CardBody>
-// 		<CardHeader className="pb-0 pt-2 px-4 flex-col items-start">
-// 		  <h4 className="font-bold text-medium">Name: {name}</h4>
-// 		  <p className="text-tiny uppercase font-bold mt-[20px]">Type: {orgType}</p>
-  
-// 		  {/* Embedding video using iframe for YouTube */}
-// 		  <div className="mt-4">
-// 			{videoEmbedURL ? (
-// 			  <iframe
-// 				ref={iframeRef}
-// 				width="100%"
-// 				height="200"
-// 				src={videoEmbedURL}
-// 				frameBorder="0"
-// 				allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-// 				allowFullScreen
-// 				className="rounded-lg"
-// 			  ></iframe>
-// 			) : (
-// 			  <p className="text-red-500">Invalid YouTube URL</p>
-// 			)}
-// 		  </div>
-  
-// 		  {/* Displaying progress */}
-// 		  <p className="text-tiny mt-4">Watched: {watchProgress.toFixed(2)}%</p>
-  
-// 		  {/* Optionally add prize information */}
 
-// 		</CardHeader>
-// 	  </Card>
-// 	);
-//   };
 
 const DailyMixCard = ({ name, orgType, redirectURL, prize }) => {
 	const [watchProgress, setWatchProgress] = useState(0);
@@ -469,6 +376,150 @@ const DailyMixCard = ({ name, orgType, redirectURL, prize }) => {
 	  </Card>
 	);
   };
+
+// const DailyMixCard = ({ name, orgType, redirectURL }) => {
+// 	const [watchProgress, setWatchProgress] = useState(0);
+// 	const [isMintAllowed, setIsMintAllowed] = useState(false);
+// 	const iframeRef = useRef(null);
+// 	const playerRef = useRef(null);
+// 	const history = useHistory(); // Create history object to navigate
+  
+// 	// Utility to extract video ID from the URL
+// 	const getYouTubeVideoID = (url) => {
+// 	  const youtubeRegex =
+// 		/(?:https?:\/\/)?(?:www\.)?(?:youtube\.com\/(?:[^/]+\/.+|(?:v|embed)\/|.*[?&]v=)|youtu\.be\/)([^"&?/ ]{11})/;
+// 	  const match = url.match(youtubeRegex);
+// 	  return match ? match[1] : null;
+// 	};
+  
+// 	const getYouTubeEmbedURL = (url) => {
+// 	  const videoID = getYouTubeVideoID(url);
+// 	  return videoID ? `https://www.youtube.com/embed/${videoID}` : null;
+// 	};
+  
+// 	useEffect(() => {
+// 	  const loadYouTubeAPI = () => {
+// 		if (!window.YT) {
+// 		  const tag = document.createElement("script");
+// 		  tag.src = "https://www.youtube.com/iframe_api";
+// 		  const firstScriptTag = document.getElementsByTagName("script")[0];
+// 		  firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+  
+// 		  window.onYouTubeIframeAPIReady = () => {
+// 			playerRef.current = new window.YT.Player(iframeRef.current, {
+// 			  events: {
+// 				onReady: onPlayerReady,
+// 				onStateChange: onPlayerStateChange,
+// 			  },
+// 			});
+// 		  };
+// 		} else {
+// 		  playerRef.current = new window.YT.Player(iframeRef.current, {
+// 			events: {
+// 			  onReady: onPlayerReady,
+// 			  onStateChange: onPlayerStateChange,
+// 			},
+// 		  });
+// 		}
+// 	  };
+  
+// 	  const onPlayerReady = (event) => {
+// 		console.log("Player is ready");
+// 	  };
+  
+// 	  const onPlayerStateChange = (event) => {
+// 		if (event.data === window.YT.PlayerState.PLAYING) {
+// 		  const duration = playerRef.current.getDuration();
+// 		  const interval = setInterval(() => {
+// 			const currentTime = playerRef.current.getCurrentTime();
+// 			const progress = (currentTime / duration) * 100;
+// 			setWatchProgress(progress);
+  
+// 			if (progress >= 97) {
+// 			  setIsMintAllowed(true);
+// 			} else {
+// 			  setIsMintAllowed(false);
+// 			}
+  
+// 			if (progress >= 100) {
+// 			  clearInterval(interval);
+// 			}
+// 		  }, 1000);
+// 		}
+// 	  };
+  
+// 	  loadYouTubeAPI();
+  
+// 	  return () => {
+// 		if (playerRef.current) {
+// 		  playerRef.current.destroy();
+// 		}
+// 	  };
+// 	}, []);
+  
+// 	const videoEmbedURL = getYouTubeEmbedURL(redirectURL);
+  
+// 	const handleMint = () => {
+// 	  // Store the course name in localStorage
+// 	  localStorage.setItem("mintedCourse", name);
+// 	  // Navigate to certificate page
+// 	  history.push("/certificate");
+// 	};
+  
+// 	return (
+// 	  <Card className="py-4 bg-black text-white shadow-md shadow-white">
+// 		<CardBody className="overflow-visible py-2">
+// 		  <img
+// 			alt="Card background"
+// 			className="object-cover rounded-xl"
+// 			src={`https://picsum.photos/220/180?random=${Math.random()}`}
+// 			width={270}
+// 		  />
+// 		</CardBody>
+// 		<CardHeader className="pb-0 pt-2 px-4 flex-col items-start">
+// 		  <h4 className="font-bold text-medium">Name: {name}</h4>
+// 		  <p className="text-tiny uppercase font-bold mt-[20px]">Type: {orgType}</p>
+  
+// 		  <div className="mt-4">
+// 			{videoEmbedURL ? (
+// 			  <iframe
+// 				ref={iframeRef}
+// 				width="100%"
+// 				height="200"
+// 				src={videoEmbedURL}
+// 				frameBorder="0"
+// 				allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+// 				allowFullScreen
+// 				className="rounded-lg"
+// 			  ></iframe>
+// 			) : (
+// 			  <p className="text-red-500">Invalid YouTube URL</p>
+// 			)}
+// 		  </div>
+  
+// 		  <div className="w-full bg-gray-300 rounded-full h-2.5 mt-4">
+// 			<div
+// 			  className="bg-blue-600 h-2.5 rounded-full"
+// 			  style={{ width: `${watchProgress}%` }}
+// 			></div>
+// 		  </div>
+  
+// 		  <p className="text-tiny mt-2">Watched: {watchProgress.toFixed(2)}%</p>
+  
+// 		  {isMintAllowed && (
+// 			<button
+// 			  className="mt-4 bg-green-500 text-white px-4 py-2 rounded-md"
+// 			  onClick={handleMint}
+// 			>
+// 			  Mint
+// 			</button>
+// 		  )}
+// 		</CardHeader>
+// 	  </Card>
+// 	);
+//   };
+  
+
   
   
   
